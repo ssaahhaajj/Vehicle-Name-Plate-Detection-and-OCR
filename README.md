@@ -8,7 +8,7 @@ The first part of Licence Plate Detection is completed using YOLOv3 with darknet
 
 For providing the bounding boxes and annotations I have used LabelImg which is also available in github. Steps involved in bulding dataset:
    -> first have all the images in a path
-   -> then open Labelmg, draw the bounding box and save the annotation of classes in it. In my case no of classes is 1 i.e. numplate
+   -> then open Labelmg, draw the bounding box and save the annotation of classes in it. In my case no of classes is 1g
    -> save in the YOLO format
    -> Run the program LINK (https://gist.github.com/ssaahhaajj/5d9e53a30bec46fdcc76cc604e890bab) in the path of folder having training and testing images
 
