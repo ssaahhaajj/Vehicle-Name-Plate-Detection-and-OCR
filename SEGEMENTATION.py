@@ -6,7 +6,6 @@ import matplotlib.patches as patches
 import matplotlib.pyplot as plt
 import detection_Licence
 
-# The invert was done so as to convert the black pixel to white pixel and vice versa
  image = np.invert(detection_Licence.img)
 #the starting portion of the Image segmentation i.e. conversion to GRAY and Binarisation
 car_image = imutils.rotate(image, 270)
