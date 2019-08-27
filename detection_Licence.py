@@ -5,18 +5,18 @@ import numpy as np
 import os.path
 
 # Initialize the parameters
-inpWidth = 416       #Width of network's input image
-inpHeight = 416      #Height of network's input image
+inpWidth = 416       #Width of input image
+inpHeight = 416      #Height of input image
 confThreshold = 0.6  #Threshold of the confidence
 nmsThreshold = 0.4  #Threshold for Non-maximum suppression
 
-parser = argparse.ArgumentParser(description='Object Detection using YOLO in OPENCV')
+parser = argparse.ArgumentParser(description='Object Detection using YOLOv3')
 parser.add_argument('--image', help='Path to image file.')
 parser.add_argument('--video', help='Path to video file.')
 args = parser.parse_args()
 
 # Load names of classes
-classesFile = "class.no";
+classesFile = "numplate.names";
 
 classes = None
 with open(classesFile, 'rt') as f:
@@ -94,8 +94,8 @@ def postprocess(frm, outs):
 
     # Perform non maximum suppression to eliminate redundant overlapping boxes with
     # lower confidences.
-    indices = cv.dnn.NMSBoxes(boxes, confidences, confThreshold, nmsThreshold)
-    for i in indices:
+    Par = cv.dnn.NMSBoxes(boxes, confidences, confThreshold, nmsThreshold)
+    for i in Par:
         i = i[0]
         box = boxes[i]
         left = box[0]
@@ -108,26 +108,28 @@ def postprocess(frm, outs):
 winName = 'Deep learning object detection Using YOLOv3'
 cv.namedWindow(winName, cv.WINDOW_NORMAL)
 
-outputFile = "yolo_out_py.avi"
+outputFile = "Output_LP.avi"
+
 if (args.image):
-    # Open the image file
+    
+    # If the input is the Image
     if not os.path.isfile(args.image):
         print("Input image file ", args.image, " doesn't exist")
         sys.exit(1)
     cap = cv.VideoCapture(args.image)
     outputFile = args.image[:-4]+'_yolo_out_py.jpg'
 elif (args.video):
-    # Open the video file
+    
+    # If the Input is a video file
     if not os.path.isfile(args.video):
         print("Input video file ", args.video, " doesn't exist")
         sys.exit(1)
     cap = cv.VideoCapture(args.video)
-    outputFile = args.video[:-4]+'_yolo_out_py.avi'
+    outputFile = args.video[:-4]+'Output_LP.avi'
 else:
-    # Webcam input
+    # If the input is Webcam 
     cap = cv.VideoCapture(0)
 
-# Get the video writer initialized to save the output video
 if (not args.image):
     vid_writer = cv.VideoWriter(outputFile, cv.VideoWriter_fourcc('M','J','P','G'), 30, (round(cap.get(cv.CAP_PROP_FRAME_WIDTH)),round(cap.get(cv.CAP_PROP_FRAME_HEIGHT))))
 
@@ -148,8 +150,7 @@ while cv.waitKey(1) < 0:
 
     t, _ = net.getPerfProfile()
     label = 'Inference time: %.2f ms' % (t * 1000.0 / cv.getTickFrequency())
-    #cv.putText(frame, label, (0, 15), cv.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255))
-
+    
     # Putting the frames
     if (args.image):
         cv.imwrite(outputFile, frame.astype(np.uint8));
