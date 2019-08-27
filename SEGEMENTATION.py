@@ -26,6 +26,7 @@ character_dimensions = (0.30*license_plate.shape[0], 0.70*license_plate.shape[0]
 min_height, max_height, min_width, max_width = character_dimensions
 
 Rec_char = []
+col_lis=[]
 for regions in regionprops(labelled_plate):
     y0, x0, y1, x1 = regions.bbox
     region_height = y1 - y0
@@ -42,5 +43,5 @@ for regions in regionprops(labelled_plate):
         # resize the characters to 20 X 20 
         resized_char = resize(roi, (20, 20))
         Rec_char.append(resized_char)
-        column_list.append(x0)
+        col_lis.append(x0)
 plt.show()
