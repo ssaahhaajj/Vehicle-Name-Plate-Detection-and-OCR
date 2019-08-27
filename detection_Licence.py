@@ -138,7 +138,7 @@ while cv.waitKey(1) < 0:
 
     t, _ = net.getPerfProfile()
     label = 'Inference time: %.2f ms' % (t * 1000.0 / cv.getTickFrequency())
-    img=[]
+    img
     # Putting the frames
     if (args.image):
         img=cv.imwrite(outputFile, frame.astype(np.uint8));
