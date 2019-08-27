@@ -118,18 +118,6 @@ if (args.image):
         sys.exit(1)
     cap = cv.VideoCapture(args.image)
     outputFile = args.image[:-4]+'_yolo_out_py.jpg'
-elif (args.video):
-    
-    # If the Input is a video file
-    if not os.path.isfile(args.video):
-        print("Input video file ", args.video, " doesn't exist")
-        sys.exit(1)
-    cap = cv.VideoCapture(args.video)
-    outputFile = args.video[:-4]+'Output_LP.avi'
-else:
-    # If the input is Webcam 
-    cap = cv.VideoCapture(0)
-
 if (not args.image):
     vid_writer = cv.VideoWriter(outputFile, cv.VideoWriter_fourcc('M','J','P','G'), 30, (round(cap.get(cv.CAP_PROP_FRAME_WIDTH)),round(cap.get(cv.CAP_PROP_FRAME_HEIGHT))))
 
@@ -150,9 +138,7 @@ while cv.waitKey(1) < 0:
 
     t, _ = net.getPerfProfile()
     label = 'Inference time: %.2f ms' % (t * 1000.0 / cv.getTickFrequency())
-    
+    img=[]
     # Putting the frames
     if (args.image):
-        cv.imwrite(outputFile, frame.astype(np.uint8));
-    else:
-        vid_writer.write(frame.astype(np.uint8))
+        img=cv.imwrite(outputFile, frame.astype(np.uint8));
