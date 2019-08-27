@@ -13,6 +13,5 @@ For providing the bounding boxes and annotations I have used LabelImg which is a
    -> Run the program LINK (https://gist.github.com/ssaahhaajj/5d9e53a30bec46fdcc76cc604e890bab) in the path of folder having training and testing images
 
 The dataset is available at https://www.floydhub.com/sahajjain/datasets/licenceplate
-
-
+Model Weights : https://drive.google.com/file/d/1qAof2POtYAInDYI7XyS4O4m5V4ByMq-b/view?usp=sharing
 
