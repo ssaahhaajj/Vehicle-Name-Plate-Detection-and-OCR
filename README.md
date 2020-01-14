@@ -20,7 +20,7 @@ Many of these applications are used commercially at various places performed by 
 There are recent advances in Parallel Processing and Deep Learning which have contributed to improve many computer vision tasks, such as Object Detection/Recognition and Optical Character Recognition, which clearly benefit ALPR systems. In fact, deep Convolutional Neural Networks have been the leading machine learning technique applied for vehicle and license plate detection and have given reasonable accuracy.
 
 
-<img src="images/pic1.png" width="100" height="100">
+<img src="images/pic1.png" width="300" height="200">
 
 For the object Detection/Recognition, we can use various techniques such as CNN, RCNN, Fast CNN, Faster RCNN, YOLO(You Look Only Once) etc. where we draw a bounding box around the Licence Plate (LP) detected.
 
@@ -103,7 +103,7 @@ The Model can be broken down into 2 parts:
 
 The first part of Licence Plate Detection is completed using YOLOv3 with darknet backbone. I used the dataset provided by TCS i.e. 237 images of cars and some bikes at different angles.
 
-For providing the bounding boxes and annotations I have used LabelImg <img src="images/pic3.png" width="20" height="20"> which is also available in github. Steps involved in bulding dataset:
+For providing the bounding boxes and annotations I have used LabelImg <img src="images/pic3.png" width="50" height="50"> which is also available in github. Steps involved in bulding dataset:
 
 
    - first have all the images in a path
@@ -115,7 +115,7 @@ For providing the bounding boxes and annotations I have used LabelImg <img src="
    - Run the program LINK (https://gist.github.com/ssaahhaajj/5d9e53a30bec46fdcc76cc604e890bab) in the path of folder having training and testing images
 
 
-The dataset is available at https://www.floydhub.com/sahajjain/datasets/licenceplate <img src="images/pic4.png" width="20" height="20">
+The dataset is available at https://www.floydhub.com/sahajjain/datasets/licenceplate <img src="images/pic4.png" width="50" height="50">
 
 Model Weights : https://drive.google.com/file/d/1qAof2POtYAInDYI7XyS4O4m5V4ByMq-b/view?usp=sharing
 
